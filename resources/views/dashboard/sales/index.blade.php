@@ -8,7 +8,7 @@
     <section class="page-body">
         <x-flash-alert name="sale" />
 
-        <form action="" method="get" class="row mb-3">
+        <form action="" method="get" class="row mb-3 d-print-none">
             <div class="col-12 col-md-2">
                 <input type="date" name="start_date" class="form-control" placeholder="Start Date"
                     value="{{ request('start_date') }}">
@@ -25,7 +25,12 @@
         </form>
         <div class="card">
             <div class="card-header justify-content-between">
-                Sales Report
+                <span>
+                    Sales Report
+                    @if(request()->has('start_date') && request()->has('end_date'))
+                        <b>{{ request('start_date') }}</b> to <b>{{ request('end_date') }}</b>
+                    @endif
+                </span>
                 <button onclick="window.print()" class="btn btn-light d-print-none">
                     <x-icon name="printer" /> Print
                 </button>
