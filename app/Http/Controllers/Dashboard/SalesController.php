@@ -111,15 +111,14 @@ class SalesController extends Controller
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    
+    public function destroy(Sale $sale)
     {
-        //
+        $sale->items()->delete();
+        $sale->delete();
+
+        return redirect()
+            ->route('dashboard.sales.index')
+            ->with('sale-success', __('Report deleted successfully'));        
     }
 }

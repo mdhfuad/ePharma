@@ -45,6 +45,7 @@
                             <th>Total Amount</th>
                             <th>Paid Amount</th>
                             <th>Date</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +59,9 @@
                                 <td>{{ $sale->total_amount }}</td>
                                 <td>{{ $sale->paid_amount }}</td>
                                 <td>{{ $sale->created_at->toFormattedDateString() }}</td>
+                                <td class="text-end">
+                                    <x-delete-button :route="route('dashboard.sales.destroy', $sale)" />
+                                </td>
                             </tr>
                         @empty
                             <tr>
@@ -83,6 +87,7 @@
                 maxDate: "today"
             });
         </script>
-
     @endpush
+
+    <x-modal.confirm-delete />
 </x-app-layout>
