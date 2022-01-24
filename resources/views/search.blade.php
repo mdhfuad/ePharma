@@ -2,10 +2,11 @@
     <table class="table table-vcenter table-nowrap">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Medicine</th>
                 <th>Dosage Form</th>
                 <th>Stock</th>
                 <th>Price</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,9 @@
                     </td>
                     <td>
                         {{ $medicine->unit_price }}
+                    </td>
+                    <td>
+                        <a href="{{ route('medicine.purchase', $medicine) }}" class="btn btn-primary {{ !$medicine->stocks_sum_stock ? 'disabled' : '' }}">Purchase</a>
                     </td>
                 </tr>
             @empty
