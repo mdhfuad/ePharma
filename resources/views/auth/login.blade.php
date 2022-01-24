@@ -3,6 +3,7 @@
         <form method="POST" action="{{ route('login') }}" class="card-body">
             @csrf
             <h1 class="card-title text-center mb-4">Login to your account</h1>
+            <x-flash-alert name="login" />
             <div class="mb-3">
                 <x-form.input label="Email address" type="email" name="email" :value="old('email')" required
                     autofocus />
