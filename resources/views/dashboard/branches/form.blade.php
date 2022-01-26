@@ -16,13 +16,14 @@
     </div>
     <div class="mb-3">
         <label for="user_id" class="form-label">Branch Manager </label>
-        <select name="user_id" id="user_id" class="form-select">
+        <select name="user_id" id="user_id" class="form-select @error('user_id')is-invalid @enderror">
             @foreach ($managers as $id => $name)
                 <option value="{{ $id }}" {{ $id == old('user_id', $branch->user_id) ? 'selected' : '' }}>
                     {{ $name }}
                 </option>
             @endforeach
         </select>
+        <x-form.error field="user_id" />
     </div>
     <div class="form-footer text-end">
         <button type="submit" class="btn btn-primary">

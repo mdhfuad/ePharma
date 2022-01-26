@@ -34,7 +34,7 @@ class BranchController extends Controller
             'email' => 'required|email|max:255',
             'website' => 'sometimes|nullable|url|max:255',
             'user_id' => ['required', 'integer', Rule::exists('users', 'id')->where('role', 'manager')],
-        ]);
+        ], [], ['user_id' => 'manager']);
 
         Branch::create($data);
 
@@ -65,7 +65,7 @@ class BranchController extends Controller
             'email' => 'required|email|max:255',
             'website' => 'sometimes|nullable|url|max:255',
             'user_id' => ['required', 'integer', Rule::exists('users', 'id')->where('role', 'manager')],
-        ]);
+        ], [], ['user_id' => 'manager']);
 
         $branch->update($data);
 
